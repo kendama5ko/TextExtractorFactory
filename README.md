@@ -3,26 +3,26 @@
 classDiagram
 Main --> TextExtractorAndWriter
 TextExtractorAndWriter --|> Factory
-TextExtractorAndWriter --> SheetsWriter
-SheetsWriter --> SheetsDataReader
-SheetsWriter --> RowColumnManager
-TextExtractorAndWriter --> RegexExtractor
+TextExtractorAndWriter --> SheetsWriter: creates
+SheetsWriter --> SheetsDataReader: uses
+SheetsWriter --> RowColumnManager: uses
+TextExtractorAndWriter --> RegexExtractor: creates
 ```
 ```mermaid
 classDiagram
     class TextExtractorAndWriter {
-        +processText(String text)
         +createProduct()
-    }
-    class RegexExtractor {
-        +extractData(String text)
+        +processText(String text)
     }
     class SheetsWriter {
         +write(String[] data)
     }
+    class RegexExtractor {
+        +extractData(String text)
+    }
     
-    TextExtractorAndWriter --> RegexExtractor: uses
     TextExtractorAndWriter --> SheetsWriter: uses
+    TextExtractorAndWriter --> RegexExtractor: uses
 ```
 
 ```mermaid
